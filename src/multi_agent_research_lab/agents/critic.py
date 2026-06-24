@@ -26,7 +26,7 @@ class CriticAgent(BaseAgent):
             AgentResult(
                 agent=AgentName.CRITIC,
                 content=response.content,
-                metadata={"input_tokens": response.input_tokens, "output_tokens": response.output_tokens}
+                metadata={"input_tokens": response.input_tokens, "output_tokens": response.output_tokens, "cost_usd": response.cost_usd}
             )
         )
         if "PASS" not in response.content.upper():

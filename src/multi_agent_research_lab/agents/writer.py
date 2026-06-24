@@ -34,6 +34,7 @@ class WriterAgent(BaseAgent):
                 metadata={
                     "input_tokens": response.input_tokens,
                     "output_tokens": response.output_tokens,
+                    "cost_usd": response.cost_usd,
                 }
             )
         )
