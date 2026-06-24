@@ -22,7 +22,6 @@ File gợi ý:
 - `src/multi_agent_research_lab/cli.py`
 - `src/multi_agent_research_lab/services/llm_client.py`
 
-TODO(student): thay baseline placeholder bằng một call LLM thật.
 
 ## Milestone 2: Supervisor
 
@@ -31,7 +30,6 @@ File gợi ý:
 - `src/multi_agent_research_lab/agents/supervisor.py`
 - `src/multi_agent_research_lab/graph/workflow.py`
 
-TODO(student): implement routing policy.
 
 Gợi ý câu hỏi thiết kế:
 
@@ -49,7 +47,6 @@ File gợi ý:
 - `agents/analyst.py`
 - `agents/writer.py`
 
-TODO(student): implement từng worker.
 
 ## Milestone 4: Trace và benchmark
 
@@ -74,4 +71,9 @@ Benchmark tối thiểu:
 Mỗi nhóm trả lời 2 câu:
 
 1. Case nào nên dùng multi-agent? Vì sao?
+   - **Trả lời**: Nên dùng Multi-agent trong các bài toán phức tạp (complex workflows) đòi hỏi nhiều kỹ năng chuyên biệt (ví dụ: vừa tìm kiếm tài liệu, vừa phân tích dữ liệu, vừa lập trình, vừa viết báo cáo). 
+   - **Vì sao?**: Vì việc chia nhỏ giúp mỗi agent có một system prompt tập trung (specialized roles), giảm thiểu ảo giác (hallucinations), tránh bị trôi context khi prompt quá dài, dễ dàng debug/quản lý từng chặng, và cho phép sử dụng các mô hình nhỏ/rẻ tiền hơn cho các tác vụ đơn giản.
+
 2. Case nào không nên dùng multi-agent? Vì sao?
+   - **Trả lời**: Không nên dùng Multi-agent cho các tác vụ đơn giản, có tính chất "hỏi-đáp" nhanh, tóm tắt một đoạn văn bản ngắn, hoặc các luồng tuyến tính không có sự phân nhánh.
+   - **Vì sao?**: Việc gọi nhiều agent làm tăng đáng kể độ trễ (latency) và chi phí (cost). Ngoài ra, cấu hình StateGraph phức tạp cho một tác vụ đơn giản sẽ làm hệ thống trở nên cồng kềnh (over-engineering) không cần thiết.
